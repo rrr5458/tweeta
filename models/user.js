@@ -2,7 +2,6 @@
 const {
   Model
 } = require('sequelize');
-const tweeta = require('./tweeta');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -12,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      tweeta.belongsTo(model.User)
+      User.hasMany(models.Tweet)
     }
   };
   User.init({

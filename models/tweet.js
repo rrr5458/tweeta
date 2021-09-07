@@ -3,23 +3,23 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Tweeta extends Model {
+  class Tweet extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+     static associate(models) {
       // define association here
-      User.hasMany(models.User)
+      Tweet.belongsTo(models.User)
     }
   };
-  Tweeta.init({
+  Tweet.init({
     UserId: DataTypes.INTEGER,
     content: DataTypes.TEXT
   }, {
     sequelize,
-    modelName: 'Tweeta',
+    modelName: 'Tweet',
   });
-  return Tweeta;
+  return Tweet;
 };
